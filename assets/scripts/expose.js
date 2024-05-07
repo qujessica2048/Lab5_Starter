@@ -6,10 +6,11 @@ function init() {
   // TODO
   var hornImage = document.querySelector("img"); // select the <img> element
   var hornAudio = document.querySelector("audio"); // select the <audio> element
+  var selectedHorn = document.getElementById("horn-select");
 
-  document.getElementById("horn-select").addEventListener('change', function() {
+  selectedHorn.addEventListener('change', function() {
       // get the selected value from dropdown
-      var selectedHorn = this.value;
+      selectedHorn = this.value;
 
       // make path to svg image
       var imagePath = "./assets/images/" + selectedHorn + ".svg";
@@ -25,7 +26,6 @@ function init() {
   document.getElementById("volume").addEventListener('input', function() {
     // get the volume
     var volumeValue = parseInt(this.value);
-    console.log(volumeValue);
 
     // conditionals for icon
     if (volumeValue == 0) {
@@ -50,8 +50,10 @@ function init() {
     hornAudio.play();
 
     // trigger confetti using the js-confetti library
-    const jsConfetti = new JSConfetti()
-    jsConfetti.addConfetti()
+    if(selectedHorn == 'party-horn') {
+      const jsConfetti = new JSConfetti()
+      jsConfetti.addConfetti()
+    }
   });
 
 } 
