@@ -44,14 +44,13 @@ function init() {
   });
 
   var playButton = document.querySelector("button");
-
+  const jsConfetti = new JSConfetti()
   playButton.addEventListener('click', function() {
     // play the audio
     hornAudio.play();
 
     // trigger confetti using the js-confetti library
     if(selectedHorn == 'party-horn') {
-      const jsConfetti = new JSConfetti()
       jsConfetti.addConfetti()
     }
   });
